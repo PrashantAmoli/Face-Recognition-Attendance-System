@@ -1,0 +1,87 @@
+form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.box {
+	/* position: absolute; */
+	/* position: relative; */
+	/* top: 25%; */
+	/* left: 50%; */
+	width: 98%;
+	height: 100px;
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+	justify-content: space-evenly;
+	/* transform: translate(-50%, -50%); */
+	margin: 0 auto;
+}
+
+.box select {
+	/* background-color: #0563af; */
+	background-color: white;
+	padding: 12px;
+	width: 98%;
+	max-width: 250px;
+	border: none;
+	font-size: 18px;
+	box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+	-webkit-appearance: button;
+	appearance: button;
+	outline: none;
+}
+
+.box select:hover {
+	box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+}
+
+.box::before {
+	/* content: '\f13a'; */
+	font-family: FontAwesome;
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 20%;
+	height: 100%;
+	text-align: center;
+	font-size: 28px;
+	line-height: 45px;
+	color: rgba(255, 255, 255, 0.5);
+	background-color: rgba(255, 255, 255, 0.1);
+	pointer-events: none;
+}
+
+.box:hover::before {
+	color: rgba(255, 255, 255, 0.6);
+	/* background-color: rgba(255, 255, 255, 0.4); */
+}
+
+.box select option {
+	padding: 30px;
+}
+
+button {
+	/* position: absolute; */
+	background-color: white;
+	padding: 12px;
+	width: 250px;
+	border: none;
+	font-size: 18px;
+	box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+}
+button:hover {
+	box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* SECTION Media Querry */
+@media only screen and (max-width: 768px) {
+	.box {
+		flex-direction: column;
+		height: 250px;
+	}
+
+	.box select {
+		max-width: 400px;
+	}
+}
