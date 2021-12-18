@@ -1,33 +1,30 @@
 import './App.css'
-import React, { useState } from 'react'
-import SelectCSSR from './components/SelectCSSR.js'
+import React, { useState, useEffect } from 'react'
+// import SelectCSSR from './components/SelectCSSR.js'
+import StudentData from './components/StudentData.js'
 import FaceDetection from './components/FaceDetection.js'
+import RefFace from './FaceData/RefFace'
 
 function App() {
-	const [CSSR, setCSSR] = useState({
-		course: 'Course',
-		semester: 'Semester',
-		section: 'Section',
-		rollNo: 'Roll No.',
-	})
-	// const [Attendees, setAttendees] = useState[{}]
+	// const [Face, setFace] = useState({ ...RefFace })
+	const [Face, setFace] = useState({})
+	let [Available, setAvailable] = useState(false)
 
-	const sendCSSR = data => {
-		setCSSR(() => {
-			return data
-		})
-		console.log(CSSR, `App.js = State Updated`)
-	}
+	useEffect(() => {
+		// let data = localStorage.getItem('Prashant')
+		// if (data) setAvailable(() => true)
+		// setFace(() => {
+		// 	return { ...data }
+		// })
+	}, [])
 
 	return (
 		<div>
-			<h1>FRAS</h1>
-			<SelectCSSR sendCSS={sendCSSR} data={CSSR} />
-			<span>{CSSR.course}--</span>
-			<span>{CSSR.semester}--</span>
-			<span>{CSSR.section}--</span>
-			<span>{CSSR.rollNo}</span>
-			<FaceDetection data={CSSR} />
+			<h1>Face Recognition Attendance System</h1>
+			<FaceDetection data={Face} available={Available} />
+			<StudentData />
+			<span>{JSON.stringify(Face)}</span>
+			{/* <SelectCSSR sendCSS={sendCSSR} data={CSSR} /> */}
 		</div>
 	)
 }

@@ -1,0 +1,15 @@
+div.detection {
+	display: flex;
+	justify-content: center;
+	/* -webkit-transform: scaleX(-1);
+	transform: scaleX(-1); */
+}
+
+video {
+	border-radius: 350px;
+	box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+}
+
+canvas {
+	position: absolute;
+}
