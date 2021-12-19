@@ -3,13 +3,34 @@ div.detection {
 	justify-content: center;
 	/* -webkit-transform: scaleX(-1);
 	transform: scaleX(-1); */
+	background-color: black;
+	color: white;
 }
 
 video {
 	border-radius: 350px;
-	box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+	box-shadow: 0 5px 25px rgba(119, 151, 255, 0.685);
 }
 
 canvas {
 	position: absolute;
+}
+
+h2 {
+	text-align: center;
+	background-color: black;
+	color: white;
+	border-radius: 3rem;
+}
+
+div.students {
+	text-align: center;
+	max-width: 500px;
+	min-height: 3rem;
+	width: 90%;
+	margin: 2rem auto 0 auto;
+	background-color: black;
+	color: white;
+	box-shadow: 0 5px 25px rgba(34, 38, 253, 0.5);
+	border-radius: 3rem;
 }

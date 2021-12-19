@@ -94,21 +94,20 @@ const FaceDetection = ({ data, available }) => {
 								console.log('RESULT=>', result.toString())
 
 								const options = { label: result.toString(), lineWidth: 3 }
-								if (result)
-									setPresent(prev => {
-										prev.unshift(result.toString())
-										showDetections(detection, result.toString())
-									})
+								if (result) {
+									const students = [...Present]
+									students.unshift(` ${result.toString()} is present.`)
+									setPresent(students)
+									showDetections(detection, result.toString())
+									console.log('Present----------', JSON.stringify(Present))
+									// setPresent(prev => {
+									// 	return prev.unshift(result.toString())
+									// })
+									// setDetectedFace(prev => {})
+								}
 
 								const drawBox = new faceapi.draw.DrawBox(resizedDetections.detection.box, options)
 								drawBox.draw(canvasRef.current)
-
-								// results.forEach((result, i) => {
-								// 	// const box = detection[i].detection.box
-								// 	// const drawBox = new faceapi.draw.DrawBox(box, { label: result.toString() })
-								// 	// drawBox.draw(canvas)
-								// 	console.log('*Result Label => ', i, result.toString())
-								// })
 
 								setDetectedFace(prev => {
 									// Update state
@@ -118,14 +117,6 @@ const FaceDetection = ({ data, available }) => {
 								const descriptors = [...Object.values(objExpressionDescriptors)]
 								console.log('Descriptors:::', JSON.stringify(descriptors))
 								if (available === false) addStudent(descriptors) // ANCHOR database
-
-								// const faceMatcher = new faceapi.FaceMatcher(data.Face)
-								// const faceMatcher = faceapi.FaceMatcher.fromJSON({
-								// 	distanceThreshold: 0.6, // not sure what is this for
-								// 	descriptors: data.Face,
-								// })
-								// const bestMatch = faceMatcher.findBestMatch(objExpressionDescriptors)
-								// console.log(bestMatch.toString())
 							}
 						}
 				})
@@ -198,9 +189,8 @@ const FaceDetection = ({ data, available }) => {
 		}
 	}
 
-	function presentees() {
-		let list = Present.map(student => <li key={student}>{student}</li>)
-		return <div>{list}</div>
+	function List() {
+		return <ol>{() => Present.map(name => <li key={name}>{name} is present.</li>)}</ol>
 	}
 
 	return (
@@ -209,10 +199,9 @@ const FaceDetection = ({ data, available }) => {
 				<video autoPlay muted ref={videoRef} onPlay={detect} />
 				<canvas ref={canvasRef} />
 			</div>
-			<div>
-				<h2>Present</h2>
-				<ul>{presentees}</ul>
-				<h3>{JSON.stringify(Present)}</h3>
+			<div className="students">
+				<h2>Students Present</h2>
+				<div>{Present[0]}</div>
 			</div>
 		</section>
 	)

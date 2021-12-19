@@ -22,8 +22,7 @@ function App() {
 		<div>
 			<h1>Face Recognition Attendance System</h1>
 			<FaceDetection data={Face} available={Available} />
-			<StudentData />
-			<span>{JSON.stringify(Face)}</span>
+			{/* <StudentData /> */}
 			{/* <SelectCSSR sendCSS={sendCSSR} data={CSSR} /> */}
 		</div>
 	)
