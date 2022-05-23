@@ -60,21 +60,18 @@ const FaceDetection = ({ data, available }) => {
 				.withFaceDescriptor()
 
 			if (detection) {
-				// console.log('Descriptor', detection.descriptor)
-				// console.log('expressions', detection.expressions)
 				const resizedDetections = faceapi.resizeResults(detection, dimensions)
 
 				Object.keys(resizedDetections.expressions).forEach(key => {
 					if (availableExpressions.indexOf(key) < 0) return // skip if other expressions
 					if (resizedDetections.expressions[key] > minConfidence && initialized === false)
 						if (!objExpressionDescriptors.hasOwnProperty(key)) {
-							console.log('Detection:', JSON.stringify(detection))
-							console.log('Resized Detections:', key, JSON.stringify(resizedDetections.descriptor))
+							// console.log('Detection:', JSON.stringify(detection))
+							// console.log('Resized Detections:', key, JSON.stringify(resizedDetections.descriptor))
 
 							// check if face expression not fulfilled yet
 							objExpressionDescriptors[key] = resizedDetections.descriptor // update fullfilled face expressions
 							// trigger event each new expression detected
-							// document.dispatchEvent(new CustomEvent('expression_added', {detail: key}))
 
 							if (hasAllExpressions()) {
 								//Add to the database or compare to the database
@@ -99,11 +96,7 @@ const FaceDetection = ({ data, available }) => {
 									students.unshift(` ${result.toString()} is present.`)
 									setPresent(students)
 									showDetections(detection, result.toString())
-									console.log('Present----------', JSON.stringify(Present))
-									// setPresent(prev => {
-									// 	return prev.unshift(result.toString())
-									// })
-									// setDetectedFace(prev => {})
+									// console.log('Present----------', JSON.stringify(Present))
 								}
 
 								const drawBox = new faceapi.draw.DrawBox(resizedDetections.detection.box, options)
