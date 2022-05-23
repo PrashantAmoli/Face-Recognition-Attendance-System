@@ -115,7 +115,7 @@ const FaceDetection = ({ data, available }) => {
 				})
 			}
 			if (detection !== undefined) showDetections(detection, Present[0])
-		}, 900)
+		}, 2000)
 	}
 
 	const hasAllExpressions = () => {
